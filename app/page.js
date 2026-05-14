@@ -1,9 +1,10 @@
  "use client";
-import React, { useState } from 'react';
-import { BookOpen, Users, Award, Menu, X, Mail, MapPin } from 'lucide-react';
+import React from 'react';
+import { BookOpen, Users, Award, Mail, MapPin } from 'lucide-react';
 
-const WalooAcademy = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function WalooAcademy() {
+  const telegramLink = "https://t.me/Latusaid";
+  const profileImageUrl = "/profile.png";
 
   const courses = [
     {
@@ -26,77 +27,50 @@ const WalooAcademy = () => {
     }
   ];
 
-  const profileImageUrl = "/profile.png";
-  // Linkii Telegram kee kan @Latusaid asitti hidhameera
-  const telegramLink = "https://t.me/Latusaid";
-
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       {/* Navigation */}
-      <nav className="bg-blue-600 text-white sticky top-0 z-50 shadow-md">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-bold tracking-tight">Waloo Academy</h1>
-          
-          <div className="hidden md:flex space-x-6">
-            <a href="#" className="hover:text-blue-200 transition">Home</a>
-            <a href="#courses" className="hover:text-blue-200 transition">Koorsiiwwan</a>
-            <a href="#about" className="hover:text-blue-200 transition">Waa'ee Keenya</a>
-            <a href="#contact" className="hover:text-blue-200 transition">Nu Quunnamuuf</a>
+      <nav className="bg-blue-600 text-white shadow-md p-4">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Waloo Academy</h1>
+          <div className="space-x-6 hidden md:flex">
+            <a href="#" className="hover:text-blue-200">Home</a>
+            <a href="#courses" className="hover:text-blue-200">Koorsiiwwan</a>
           </div>
-
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <header className="bg-white py-16 px-4 border-b border-slate-200">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl font-extrabold text-blue-800 mb-4">Waloo Academy</h2>
-          <p className="text-xl text-slate-600 mb-8">Bakka Beekumsaa fi Kalaqaa!</p>
-          
-          <div className="relative inline-block mb-8 group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-            <img 
-              src={profileImageUrl} 
-              alt="Waloo Academy Profile" 
-              className="relative w-80 h-auto rounded-2xl shadow-2xl border-4 border-white object-cover"
-              onError={(e) => {
-                e.target.src = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=400";
-              }}
-            />
-          </div>
-          
-          <div className="block">
-            <a 
-              href="#courses" 
-              className="bg-blue-600 text-white px-10 py-4 rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg hover:shadow-xl inline-block"
-            >
-              Barachuu Jalqabi!
-            </a>
-          </div>
-        </div>
+      {/* Hero */}
+      <header className="bg-white py-16 px-4 text-center">
+        <h2 className="text-5xl font-extrabold text-blue-800 mb-4">Waloo Academy</h2>
+        <p className="text-xl text-slate-600 mb-8">Bakka Beekumsaa fi Kalaqaa!</p>
+        <img 
+          src={profileImageUrl} 
+          alt="Profile" 
+          className="mx-auto w-64 h-auto rounded-2xl shadow-xl border-4 border-white mb-8"
+          onError={(e) => { e.target.src = "https://via.placeholder.com/400"; }}
+        />
+        <br />
+        <a href="#courses" className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700">
+          Barachuu Jalqabi
+        </a>
       </header>
 
-      {/* Courses Section */}
+      {/* Courses */}
       <section id="courses" className="py-20 max-w-6xl mx-auto px-4">
-        <h3 className="text-3xl font-bold text-center mb-12 text-blue-900">Koorsiiwwan Keenya</h3>
         <div className="grid md:grid-cols-3 gap-8">
           {courses.map((course) => (
-            <div key={course.id} className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-xl transition duration-300 transform hover:-translate-y-1">
-              <div className="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center">
-                {course.icon}
-              </div>
-              <h4 className="text-xl font-bold mb-3">{course.title}</h4>
+            <div key={course.id} className="bg-white p-8 rounded-2xl shadow-md border border-slate-100 text-center">
+              <div className="flex justify-center mb-4">{course.icon}</div>
+              <h4 className="text-xl font-bold mb-2">{course.title}</h4>
               <p className="text-slate-600 mb-6">{course.description}</p>
               
-              {/* BUTTON KALLATTIIN GARA TELEGRAM-TIITTI SI FIDU */}
+              {/* BUTTON KALLATTIIN TELEGRAM-TIITTI GEESSU */}
               <a 
                 href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-block text-center bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+                className="inline-block w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors"
               >
                 Amma Galmaa'i
               </a>
@@ -105,30 +79,17 @@ const WalooAcademy = () => {
         </div>
       </section>
 
-      {/* Contact Footer */}
-      <footer id="contact" className="bg-slate-900 text-white py-12 px-4 mt-20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold mb-6">Nu Quunnamaa</h3>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3 text-slate-300">
-                <MapPin className="text-blue-400" />
-                <span>Addis Ababa, Ethiopia (AAU)</span>
-              </div>
-              <div className="flex items-center space-x-3 text-slate-300">
-                <Mail className="text-blue-400" />
-                <span>info@walooacademy.com</span>
-              </div>
-            </div>
+      {/* Footer */}
+      <footer className="bg-slate-900 text-white py-12 px-4 text-center">
+        <div className="max-w-6xl mx-auto">
+          <h3 className="text-xl font-bold mb-4">Nu Quunnamaa</h3>
+          <div className="flex justify-center space-x-6 text-slate-300 mb-6">
+            <span className="flex items-center"><MapPin className="mr-2 w-4 h-4" /> Addis Ababa (AAU)</span>
+            <span className="flex items-center"><Mail className="mr-2 w-4 h-4" /> @Latusaid</span>
           </div>
-          <div className="text-slate-400 text-sm">
-            © 2026 Waloo Academy. All rights reserved. <br />
-            Developed with Passion for Education by Rorisa.
-          </div>
+          <p className="text-slate-500 text-sm">© 2026 Waloo Academy. Developed by Rorisa.</p>
         </div>
       </footer>
     </div>
   );
-};
-
-export default WalooAcademy;
+}
