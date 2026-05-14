@@ -11,19 +11,19 @@ export default function WalooAcademy() {
       id: 1,
       title: "Economics for Beginners",
       description: "Bu'uura diinagdee fi yaada madaala gabaa salphaatti bari.",
-      icon: <BookOpen className="w-8 h-8 text-blue-600" />,
+      icon: <BookOpen className="w-8 h-8 text-blue-600" />
     },
     {
       id: 2,
       title: "Data Analysis with Excel",
       description: "Oofisa keessatti akkamitti data xiinxaluun akka danda'amu baradhu.",
-      icon: <Users className="w-8 h-8 text-blue-600" />,
+      icon: <Users className="w-8 h-8 text-blue-600" />
     },
     {
       id: 3,
       title: "Programming Basics",
       description: "Koodii barreessuu jalqabuuf bu'uura Python fi JavaScript.",
-      icon: <Award className="w-8 h-8 text-blue-600" />,
+      icon: <Award className="w-8 h-8 text-blue-600" />
     }
   ];
 
@@ -46,6 +46,7 @@ export default function WalooAcademy() {
           src={profileImageUrl} 
           alt="Profile" 
           className="mx-auto w-64 h-auto rounded-2xl shadow-xl border-4 border-white mb-8"
+          onError={(e) => { e.target.src = "https://via.placeholder.com/400"; }}
         />
         <br />
         <a href="#courses" className="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700">
@@ -53,10 +54,10 @@ export default function WalooAcademy() {
         </a>
       </header>
 
-      <section id="courses" className="py-20 max-w-6xl mx-auto px-4 text-center">
+      <section id="courses" className="py-20 max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           {courses.map((course) => (
-            <div key={course.id} className="bg-white p-8 rounded-2xl shadow-md border border-slate-100">
+            <div key={course.id} className="bg-white p-8 rounded-2xl shadow-md border border-slate-100 text-center">
               <div className="flex justify-center mb-4">{course.icon}</div>
               <h4 className="text-xl font-bold mb-2">{course.title}</h4>
               <p className="text-slate-600 mb-6">{course.description}</p>
@@ -64,7 +65,7 @@ export default function WalooAcademy() {
                 href={telegramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700"
+                className="inline-block w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-colors"
               >
                 Amma Galmaa'i
               </a>
